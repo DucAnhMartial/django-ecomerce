@@ -55,7 +55,7 @@ ROOT_URLCONF = 'ecommerce.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [], #Chứa đựng file template
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -116,13 +116,12 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_ROOT = BASE_DIR / 'static'
+STATICFILES_DIRS = [BASE_DIR / 'staticfiles']
 
+MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR / 'media'
 
-STATICFILES_DIRS = [BASE_DIR / 'static']
-
-MEDIA_UERL = '/media/'
-
-MEDIA_ROOT = BASE_DIR / 'static/media'
 
 
 # Default primary key field type
