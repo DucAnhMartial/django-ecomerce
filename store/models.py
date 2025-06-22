@@ -16,7 +16,9 @@ class Category(models.Model):
   def __str__(self):
     return self.name
 
-  
+  #create dynamic links
+  def get_absolute_url(self):
+      return reverse('list_category',args=[self.slug])
   
 class Product(models.Model):
   #category is foriegn key
