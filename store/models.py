@@ -1,5 +1,7 @@
 from django.db import models
 
+from django.urls import reverse
+
 # Create your models here.
 class Category(models.Model):
   name = models.CharField(max_length=255,db_index=True)
@@ -13,6 +15,7 @@ class Category(models.Model):
   #Thể hiện chuỗi đại diện cho models 
   def __str__(self):
     return self.name
+
   
   
 class Product(models.Model):
@@ -36,4 +39,9 @@ class Product(models.Model):
   #Thể hiện chuỗi đại diện cho models 
   def __str__(self):
     return self.title
+  
+  
+  #create dynamic links
+  def get_absolute_url(self):
+      return reverse('product_info',args=[self.slug])
   
