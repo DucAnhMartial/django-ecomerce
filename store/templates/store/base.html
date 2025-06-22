@@ -87,12 +87,21 @@
 
                         <li>
                             
-                            <a class="dropdown-item" href="{% url 'store' %}"> All </a>
+                            <a class="dropdown-item" href="{% url 'store' %}">ALL</a>
                         
                         </li>
                     
-        
+                        
+                        {% for category in all_categories %}
+
+                        <li>
+                            {% comment %} display the first char caplock {% endcomment %}
+                            <a class="dropdown-item" href="{% url 'store' %}"> {{category.name | capfirst}} </a>
                     
+                        </li>
+                        
+                        {% endfor %}
+
                     </ul>
 
                 </li>
