@@ -10,12 +10,11 @@ from django.http import JsonResponse
 def cart_summary(request):
   
   cart = Cart(request)  
-  
+
   return render (request, 'cart/cart-summary.html',{'cart': cart})
 
 def cart_add (request):
   
-  print(request)
   cart = Cart(request)
   
   if request.POST.get('action') == 'post':
