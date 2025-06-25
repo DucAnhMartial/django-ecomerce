@@ -109,12 +109,16 @@
             url: '{% url 'cart-add' %}',
             data: {
                 product_id: $('#add-button').val(),
-                product_quantity: $('#selectoption:selected').text(),
-                cstfmiddlewaretoken: '{{csrf_token}}',
+                product_quantity: $('#select').val(),
+                csrfmiddlewaretoken: '{{csrf_token}}',
                 action: 'post'
             },
 
             success: function(json){
+
+                console.log(json)
+
+                document.getElementById('cart-qty').textContent = json.qty
 
             },
 
