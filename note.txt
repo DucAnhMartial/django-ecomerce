@@ -1,0 +1,3 @@
+- AJAX là cách để gửi nhận dữ liệu từ server mà không cần tải lại trang. Nó giúp website nhanh hơn, mượt hơn và có trả nghiệm giống ứng dụng hơn
+- Ajax (asynchronous JavaScript and XML) trong django có nghĩa là dùng JS (hoặc jQuery hoặc fetchAPI)
+để gửi request tới server Django, thường là JSON và server trả về dữ liệu JSON mà không render lại HTML
