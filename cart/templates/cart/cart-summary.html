@@ -62,28 +62,20 @@
                   <label for="select">Qty</label>
 
                   &nbsp; 
-                  
-                  <select id="">
-                  
-                    <option selected>
-                  
-                        {{item.qty}}
-                  
-                    </option>
-                  
-                    <option value="">1</option>
-                  
-                    <option value="">2</option>
-                  
-                    <option value="">3</option>
-                  
-                    <option value="">4</option>
-                  
+                                    
+                  <select id="select{{product.id}}">
+                      <option value="{{item.qty}}" selected>{{item.qty}}</option>
+                      <option value="1">1</option>
+                      <option value="2">2</option>
+                      <option value="3">3</option>
+                      <option value="4">4</option>
                   </select>
+                  
+                  
                   
                   <br> <br>
 
-                  <button type="button" id="update-button"
+                  <button type="button" id="update-button" data-index="{{product.id}}"
                     class="btn btn-primary btn-sm update-button">
                     Update
                   
@@ -161,6 +153,37 @@
       })
     })
 
+
+    $(document).on('click', '.update-button', function(e){
+
+      e.preventDefault();
+
+      var theProductId = $(this).data('index')
+      console.log(theProductId)
+      $.ajax({
+
+        type: 'POST',
+        url: '{% url "cart-update" %}',
+        data: {
+          product_id : $(this).data('index'),
+          product_quantity: $('#select'+ theProductId).val(),
+          csrfmiddlewaretoken: '{{csrf_token}}',
+          action: 'post'
+        },
+
+        success: function(json) {
+          
+          console.log(json)
+          location.reload()
+          document.getElementById('cart-qty').textContent = json.cart_quantity
+          document.getElementById('total').textContent = json.cart_total
+        },
+        
+        error: function(xhr, errmsg, err){
+
+        }
+      })
+    })
 
  </script>
 
